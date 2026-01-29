@@ -88,22 +88,22 @@ const skillList = skills as Array<{
           >
             Skills
           </h2>
-          <div class="grid gap-4 px-0 sm:grid-cols-2 sm:px-0">
+          <div class="grid gap-4 px-4 sm:grid-cols-2 sm:px-0">
             {
               skillList.map((skill) => (
                 <a
                   href={`/skills/${skill.slug}`}
-                  class="hover:border-parchment-300 relative flex items-center justify-between rounded-none border-t border-b border-neutral-200 bg-white py-3.5 pr-4 pl-6 shadow-2xs transition-colors sm:rounded-[8px] sm:border-none sm:ring-1 sm:ring-black/10"
+                  class="hover:border-parchment-300 hover:bg-parchment-100 relative flex flex-col justify-between rounded-[12px] border border-neutral-200 bg-transparent px-6 py-4 transition-colors"
                 >
-                  <div class="text-parchment-500 mask-b-from-40% mask-b-to-100% text-[13px]">
-                    <div>---</div>
-                    <div>name: {skill.slug}</div>
+                  <div class="flex flex-col gap-1">
+                    <div class="text-parchment-900 font-[450] tracking-tight">
+                      {skill.slug}
+                    </div>
                     {skill.description ? (
-                      <div class="text-parchment-400">
-                        description: {skill.description}
+                      <div class="text-parchment-500 line-clamp-3 text-[14px] leading-snug">
+                        {skill.description}
                       </div>
                     ) : null}
-                    <div>---</div>
                   </div>
                 </a>
               ))

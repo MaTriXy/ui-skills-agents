@@ -5,7 +5,10 @@ import { registry } from "../../data/registry";
 
 export const GET: APIRoute = () => {
   const body = registry
-    .map((entry: RegistrySkill) => `${entry.slug}\t${entry.rawUrl}`)
+    .map(
+      (entry: RegistrySkill) =>
+        `${entry.slug}\t${entry.rawUrl}\t${entry.description ?? ""}`,
+    )
     .join("\n");
 
   return new Response(`${body}\n`, {

@@ -47,13 +47,15 @@ const localSkills: Skill[] = Object.entries(skillModules).map(
   },
 );
 
-const registrySkills: Skill[] = registry.map((s) => ({
-  slug: s.slug,
-  name: s.name ?? s.slug,
-  label: titleize(s.name ?? s.slug),
-  description: s.description,
-  isRegistry: true,
-}));
+const registrySkills: Skill[] = registry
+  .filter((s) => !localSkills.some((ls) => ls.slug === s.slug))
+  .map((s) => ({
+    slug: s.slug,
+    name: s.name ?? s.slug,
+    label: titleize(s.name ?? s.slug),
+    description: s.description,
+    isRegistry: true,
+  }));
 
 export const skills: Skill[] = [...localSkills, ...registrySkills].sort(
   (a, b) => {
