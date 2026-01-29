@@ -60,8 +60,10 @@ print_error() {
 # Configuration
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 DEFAULT_SKILL="baseline-ui"
-ALL_SKILLS="baseline-ui fixing-accessibility fixing-metadata fixing-motion-performance"
-SKILL_URL_BASE="https://ui-skills.com/skills"
+ALL_SKILLS="baseline-ui fixing-accessibility fixing-metadata fixing-motion-performance frontend-design"
+UI_SKILLS_BASE_URL="${UI_SKILLS_BASE_URL:-https://ui-skills.com}"
+SKILL_URL_BASE="${UI_SKILLS_BASE_URL%/}/skills"
+REGISTRY_URL="${UI_SKILLS_REGISTRY_URL:-${SKILL_URL_BASE}/registry.txt}"
 TRACKING_URL="https://collector.onedollarstats.com/events"
 TRACKING_SOURCE="https://ui-skills.com/install"
 
@@ -100,15 +102,49 @@ printf "\n"
 # Prepare temp files for raw skill and command content
 TMP_SKILL="$(mktemp)"
 TMP_COMMAND="$(mktemp)"
+TMP_REGISTRY="$(mktemp)"
+REGISTRY_CACHED=0
 
 cleanup() {
-  rm -f "$TMP_SKILL" "$TMP_COMMAND"
+  rm -f "$TMP_SKILL" "$TMP_COMMAND" "$TMP_REGISTRY"
 }
 trap cleanup EXIT
 
+ensure_registry_cache() {
+  if [ "$REGISTRY_CACHED" -eq 1 ]; then
+    return
+  fi
+
+  if command -v curl >/dev/null 2>&1; then
+    curl -fsSL "$REGISTRY_URL" -o "$TMP_REGISTRY" >/dev/null 2>&1 || true
+  elif command -v wget >/dev/null 2>&1; then
+    wget -q "$REGISTRY_URL" -O "$TMP_REGISTRY" >/dev/null 2>&1 || true
+  else
+    : > "$TMP_REGISTRY"
+  fi
+
+  REGISTRY_CACHED=1
+}
+
+get_registry_url() {
+  skill_slug="$1"
+  ensure_registry_cache
+
+  if [ ! -s "$TMP_REGISTRY" ]; then
+    return
+  fi
+
+  awk -F '\t' -v slug="$skill_slug" '$1 == slug {print $2; exit}' "$TMP_REGISTRY"
+}
+
 download_skill() {
   skill_slug="$1"
-  skill_url="$SKILL_URL_BASE/$skill_slug/llms.txt"
+  registry_url="$(get_registry_url "$skill_slug")"
+  if [ -n "$registry_url" ]; then
+    skill_url="$registry_url"
+  else
+    skill_url="$SKILL_URL_BASE/$skill_slug/llms.txt"
+  fi
   local_skill="${SCRIPT_DIR}/skills/${skill_slug}/SKILL.md"
 
   if [ -f "$local_skill" ]; then
