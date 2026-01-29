@@ -4,6 +4,7 @@ import { skills } from "../data/skills";
 import { CopyButton } from "../ui/copy-button";
 import CodeBlock from "../ui/code-block.astro";
 import { InstallTabs } from "../ui/install-tabs";
+import ExpandableCodeBlock from "../ui/expandable-code-block.astro";
 
 const skillList = skills as Array<{
   slug: string;
@@ -45,7 +46,7 @@ const skillList = skills as Array<{
           >
             Add a specific skill
           </h2>
-          <CodeBlock
+          <ExpandableCodeBlock
             lines={skillList.map((skill) => [
               { text: "npx", className: "text-[#953800]" },
               { text: " ui-skills", className: "text-[#0a3069]" },
