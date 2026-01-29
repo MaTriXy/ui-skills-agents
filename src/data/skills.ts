@@ -1,5 +1,7 @@
 import type { MarkdownInstance } from "astro";
 
+import { registry } from "./registry";
+
 type SkillFrontmatter = {
   name?: string;
   description?: string;
@@ -11,14 +13,8 @@ export type Skill = {
   name: string;
   label: string;
   description?: string;
+  isRegistry?: boolean;
 };
-
-const skillOrder = [
-  "baseline-ui",
-  "fixing-motion-performance",
-  "fixing-accessibility",
-  "fixing-metadata",
-];
 
 const skillModules = import.meta.glob<MarkdownInstance<SkillFrontmatter>>(
   "/skills/*/SKILL.md",
@@ -37,8 +33,8 @@ const titleize = (value: string) =>
     })
     .join(" ");
 
-export const skills: Skill[] = Object.entries(skillModules)
-  .map(([path, module]) => {
+const localSkills: Skill[] = Object.entries(skillModules).map(
+  ([path, module]) => {
     const slug = path.split("/").at(-2) ?? "";
     const name = module.frontmatter.name ?? slug;
 
@@ -48,8 +44,25 @@ export const skills: Skill[] = Object.entries(skillModules)
       label: module.frontmatter.label ?? titleize(name),
       description: module.frontmatter.description,
     };
-  })
-  .sort(
-    (a, b) =>
-      skillOrder.indexOf(a.slug) - skillOrder.indexOf(b.slug),
-  );
+  },
+);
+
+const registrySkills: Skill[] = registry.map((s) => ({
+  slug: s.slug,
+  name: s.name ?? s.slug,
+  label: titleize(s.name ?? s.slug),
+  description: s.description,
+  isRegistry: true,
+}));
+
+export const skills: Skill[] = [...localSkills, ...registrySkills].sort(
+  (a, b) => {
+    if (a.slug === "baseline-ui") return -1;
+    if (b.slug === "baseline-ui") return 1;
+
+    if (!a.isRegistry && b.isRegistry) return -1;
+    if (a.isRegistry && !b.isRegistry) return 1;
+
+    return a.slug.localeCompare(b.slug);
+  },
+);

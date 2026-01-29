@@ -3,7 +3,9 @@ import Layout from "../../layouts/Layout.astro";
 import CodeBlock from "../../ui/code-block.astro";
 import type { MarkdownInstance } from "astro";
 import { skills } from "../../data/skills";
+import { registry } from "../../data/registry";
 import SkillCard from "../../ui/skill-card.astro";
+import { marked } from "marked";
 
 type SkillFrontmatter = {
   name?: string;
@@ -16,6 +18,7 @@ type SkillEntry = {
   name: string;
   label: string;
   description?: string;
+  isRegistry?: boolean;
 };
 
 const skillModules = import.meta.glob<MarkdownInstance<SkillFrontmatter>>(
@@ -45,13 +48,45 @@ export function getStaticPaths() {
   }));
 }
 
-const { slug } = Astro.props as SkillEntry;
+const { slug, isRegistry } = Astro.props as SkillEntry;
 const skillList = skills as SkillEntry[];
 const skill = skillList.find((entry) => entry.slug === slug);
-const skillModule = skillEntries.find((entry) => entry.slug === slug)?.module;
-const skillRaw =
-  skillRawEntries.find((entry) => entry.slug === slug)?.raw ?? "";
-const SkillContent = skillModule?.Content;
+
+let skillRaw = "";
+let displayContent = "";
+let SkillContent: any = null;
+let githubUrl = "";
+
+if (isRegistry) {
+  const registryEntry = registry.find((s) => s.slug === slug);
+  if (registryEntry) {
+    try {
+      const response = await fetch(registryEntry.rawUrl);
+      if (response.ok) {
+        skillRaw = await response.text();
+        githubUrl = registryEntry.githubUrl;
+        let contentToRender = skillRaw;
+
+        if (contentToRender.startsWith("---")) {
+          const parts = contentToRender.split("---");
+          if (parts.length >= 3) {
+            contentToRender = parts.slice(2).join("---").trim();
+          }
+        }
+        displayContent = await marked.parse(contentToRender);
+      } else {
+        displayContent = `<p>Error: Failed to fetch skill content from ${registryEntry.rawUrl} (${response.status} ${response.statusText})</p>`;
+      }
+    } catch (e) {
+      displayContent = `<p>Error: ${e instanceof Error ? e.message : String(e)}</p>`;
+    }
+  }
+} else {
+  const skillModule = skillEntries.find((entry) => entry.slug === slug)?.module;
+  skillRaw = skillRawEntries.find((entry) => entry.slug === slug)?.raw ?? "";
+  SkillContent = skillModule?.Content;
+}
+
 const commandSegments = [
   { text: "npx", className: "text-[#953800]" },
   { text: " ui-skills", className: "text-[#0a3069]" },
@@ -67,12 +102,26 @@ const commandSegments = [
     <div class="relative mt-20 w-full max-w-3xl sm:px-0">
       <div class="mx-auto flex w-full flex-col gap-14">
         <div class="px-4 sm:px-0">
-          <a
-            href="/"
-            class="text-parchment-500 hover:text-parchment-900 text-sm font-medium"
-          >
-            Back to home
-          </a>
+          <div class="flex items-center justify-between">
+            <a
+              href="/"
+              class="text-parchment-500 hover:text-parchment-900 text-sm font-medium"
+            >
+              Back to home
+            </a>
+            {
+              githubUrl ? (
+                <a
+                  href={githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-parchment-500 hover:text-parchment-900 text-sm font-medium"
+                >
+                  View source
+                </a>
+              ) : null
+            }
+          </div>
           <h1
             class="text-parchment-900 mt-3 text-3xl font-medium tracking-tight"
           >
@@ -98,7 +147,7 @@ const commandSegments = [
           description={skill?.description}
           dataEvent="install"
         >
-          {SkillContent ? <SkillContent /> : null}
+          {SkillContent ? <SkillContent /> : <div set:html={displayContent} />}
         </SkillCard>
       </div>
     </div>
