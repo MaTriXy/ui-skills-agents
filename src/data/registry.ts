@@ -45,26 +45,6 @@ export const registry: RegistrySkill[] = [
     description:
       "Comprehensive UI/UX design intelligence with 50+ styles, 97 palettes, and 9 technology stacks for building professional interfaces.",
   },
-  /*
-  {
-    slug: "responsive-design",
-    user: "wshobson",
-    repo: "agents",
-    rawUrl:
-      "https://raw.githubusercontent.com/wshobson/agents/main/plugins/ui-design/skills/responsive-design/SKILL.md",
-    githubUrl:
-      "https://github.com/wshobson/agents/blob/main/plugins/ui-design/skills/responsive-design/SKILL.md",
-  },
-  {
-    slug: "web-component-design",
-    user: "wshobson",
-    repo: "agents",
-    rawUrl:
-      "https://raw.githubusercontent.com/wshobson/agents/main/plugins/ui-design/skills/web-component-design/SKILL.md",
-    githubUrl:
-      "https://github.com/wshobson/agents/blob/main/plugins/ui-design/skills/web-component-design/SKILL.md",
-  },
-  */
   {
     slug: "interaction-design",
     user: "wshobson",
@@ -77,62 +57,6 @@ export const registry: RegistrySkill[] = [
     description:
       "Design and implement microinteractions, motion design, transitions, and user feedback patterns for delightful user experiences.",
   },
-  /*
-  {
-    slug: "accessibility-compliance",
-    user: "wshobson",
-    repo: "agents",
-    rawUrl:
-      "https://raw.githubusercontent.com/wshobson/agents/main/plugins/ui-design/skills/accessibility-compliance/SKILL.md",
-    githubUrl:
-      "https://github.com/wshobson/agents/blob/main/plugins/ui-design/skills/accessibility-compliance/SKILL.md",
-  },
-  {
-    slug: "screen-reader-testing",
-    user: "wshobson",
-    repo: "agents",
-    rawUrl:
-      "https://raw.githubusercontent.com/wshobson/agents/main/plugins/accessibility-compliance/skills/screen-reader-testing/SKILL.md",
-    githubUrl:
-      "https://github.com/wshobson/agents/blob/main/plugins/accessibility-compliance/skills/screen-reader-testing/SKILL.md",
-  },
-  {
-    slug: "wcag-audit-patterns",
-    user: "wshobson",
-    repo: "agents",
-    rawUrl:
-      "https://raw.githubusercontent.com/wshobson/agents/main/plugins/accessibility-compliance/skills/wcag-audit-patterns/SKILL.md",
-    githubUrl:
-      "https://github.com/wshobson/agents/blob/main/plugins/accessibility-compliance/skills/wcag-audit-patterns/SKILL.md",
-  },
-  {
-    slug: "mobile-ios-design",
-    user: "wshobson",
-    repo: "agents",
-    rawUrl:
-      "https://raw.githubusercontent.com/wshobson/agents/main/plugins/ui-design/skills/mobile-ios-design/SKILL.md",
-    githubUrl:
-      "https://github.com/wshobson/agents/blob/main/plugins/ui-design/skills/mobile-ios-design/SKILL.md",
-  },
-  {
-    slug: "mobile-android-design",
-    user: "wshobson",
-    repo: "agents",
-    rawUrl:
-      "https://raw.githubusercontent.com/wshobson/agents/main/plugins/ui-design/skills/mobile-android-design/SKILL.md",
-    githubUrl:
-      "https://github.com/wshobson/agents/blob/main/plugins/ui-design/skills/mobile-android-design/SKILL.md",
-  },
-  {
-    slug: "react-native-design",
-    user: "wshobson",
-    repo: "agents",
-    rawUrl:
-      "https://raw.githubusercontent.com/wshobson/agents/main/plugins/ui-design/skills/react-native-design/SKILL.md",
-    githubUrl:
-      "https://github.com/wshobson/agents/blob/main/plugins/ui-design/skills/react-native-design/SKILL.md",
-  },
-  */
   {
     slug: "swiftui-ui-patterns",
     user: "dimillian",
@@ -169,49 +93,6 @@ export const registry: RegistrySkill[] = [
     description:
       "Toolkit for creating and maintaining scalable design systems, including design tokens, component architecture, and documentation.",
   },
-  /*
-  {
-    slug: "frontend-ui-ux",
-    user: "code-yeongyu",
-    repo: "oh-my-opencode",
-    rawUrl:
-      "https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/dev/src/features/builtin-skills/frontend-ui-ux/SKILL.md",
-    githubUrl:
-      "https://github.com/code-yeongyu/oh-my-opencode/blob/dev/src/features/builtin-skills/frontend-ui-ux/SKILL.md",
-  },
-  */
-  {
-    slug: "fixing-motion-performance",
-    user: "ibelick",
-    repo: "ui-skills",
-    rawUrl:
-      "https://raw.githubusercontent.com/ibelick/ui-skills/main/skills/fixing-motion-performance/SKILL.md",
-    githubUrl:
-      "https://github.com/ibelick/ui-skills/blob/main/skills/fixing-motion-performance/SKILL.md",
-    name: "fixing-motion-performance",
-    description:
-      "Fix animation performance issues across CSS, Motion, and JS. Optimize rendering steps and minimize layout thrashing.",
-  },
-  /*
-  {
-    slug: "fixing-metadata",
-    user: "ibelick",
-    repo: "ui-skills",
-    rawUrl:
-      "https://raw.githubusercontent.com/ibelick/ui-skills/main/skills/fixing-metadata/SKILL.md",
-    githubUrl:
-      "https://github.com/ibelick/ui-skills/blob/main/skills/fixing-metadata/SKILL.md",
-  },
-  {
-    slug: "kpi-dashboard-design",
-    user: "wshobson",
-    repo: "agents",
-    rawUrl:
-      "https://raw.githubusercontent.com/wshobson/agents/main/plugins/business-analytics/skills/kpi-dashboard-design/SKILL.md",
-    githubUrl:
-      "https://github.com/wshobson/agents/blob/main/plugins/business-analytics/skills/kpi-dashboard-design/SKILL.md",
-  },
-  */
   {
     slug: "tailwind-css-patterns",
     user: "giuseppe-trisciuoglio",
@@ -224,26 +105,6 @@ export const registry: RegistrySkill[] = [
     description:
       "Expert guide for building modern, responsive user interfaces with Tailwind CSS utility-first patterns and modern CSS best practices.",
   },
-  /*
-  {
-    slug: "react-patterns",
-    user: "giuseppe-trisciuoglio",
-    repo: "developer-kit",
-    rawUrl:
-      "https://raw.githubusercontent.com/giuseppe-trisciuoglio/developer-kit/main/skills/react/SKILL.md",
-    githubUrl:
-      "https://github.com/giuseppe-trisciuoglio/developer-kit/blob/main/skills/react/SKILL.md",
-  },
-  {
-    slug: "react-ui-patterns",
-    user: "sickn33",
-    repo: "antigravity-awesome-skills",
-    rawUrl:
-      "https://raw.githubusercontent.com/sickn33/antigravity-awesome-skills/main/skills/react-ui-patterns/SKILL.md",
-    githubUrl:
-      "https://github.com/sickn33/antigravity-awesome-skills/blob/main/skills/react-ui-patterns/SKILL.md",
-  },
-  */
   {
     slug: "canvas-design",
     user: "anthropics",
@@ -268,26 +129,6 @@ export const registry: RegistrySkill[] = [
     description:
       "Apply Disney's 12 animation principles to web interfaces to make motion feel natural, organic, and human.",
   },
-  /*
-  {
-    slug: "to-spring-or-not-to-spring",
-    user: "raphaelsalaja",
-    repo: "userinterface-wiki",
-    rawUrl:
-      "https://raw.githubusercontent.com/raphaelsalaja/userinterface-wiki/main/skills/to-spring-or-not-to-spring/SKILL.md",
-    githubUrl:
-      "https://github.com/raphaelsalaja/userinterface-wiki/blob/main/skills/to-spring-or-not-to-spring/SKILL.md",
-  },
-  {
-    slug: "sounds-on-the-web",
-    user: "raphaelsalaja",
-    repo: "userinterface-wiki",
-    rawUrl:
-      "https://raw.githubusercontent.com/raphaelsalaja/userinterface-wiki/main/skills/sounds-on-the-web/SKILL.md",
-    githubUrl:
-      "https://github.com/raphaelsalaja/userinterface-wiki/blob/main/skills/sounds-on-the-web/SKILL.md",
-  },
-  */
   {
     slug: "design-lab",
     user: "0xdesign",
