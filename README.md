@@ -28,12 +28,14 @@ npx ui-skills add --all
 
 ## Available skills
 
-| Skill | Purpose |
-|------|---------|
-| [baseline-ui](./skills/baseline-ui/SKILL.md) | opinionated UI baseline |
-| [fixing-accessibility](./skills/fixing-accessibility/SKILL.md) | keyboard, labels, focus, semantics |
-| [fixing-metadata](./skills/fixing-metadata/SKILL.md) | correct titles, meta, social cards |
-| [fixing-motion-performance](./skills/fixing-motion-performance/SKILL.md) | safe, performance-first UI motion |
+| Skill                                                                    | Purpose                            |
+| ------------------------------------------------------------------------ | ---------------------------------- |
+| [baseline-ui](./skills/baseline-ui/SKILL.md)                             | opinionated UI baseline            |
+| [fixing-accessibility](./skills/fixing-accessibility/SKILL.md)           | keyboard, labels, focus, semantics |
+| [fixing-metadata](./skills/fixing-metadata/SKILL.md)                     | correct titles, meta, social cards |
+| [fixing-motion-performance](./skills/fixing-motion-performance/SKILL.md) | safe, performance-first UI motion  |
+
+More on [ui-skills.com](http://ui-skills.com/)
 
 ## License
 
