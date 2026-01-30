@@ -4,8 +4,8 @@ export type RegistrySkill = {
   repo: string;
   rawUrl: string;
   githubUrl: string;
-  name?: string;
-  description?: string;
+  name: string;
+  description: string;
 };
 
 export const registry: RegistrySkill[] = [
@@ -82,16 +82,16 @@ export const registry: RegistrySkill[] = [
       "Specialized skill for interface design: dashboards, admin panels, and SaaS apps. Focused on craft and consistency.",
   },
   {
-    slug: "ui-design-system",
-    user: "davila7",
-    repo: "claude-code-templates",
+    slug: "wcag-audit-patterns",
+    user: "wshobson",
+    repo: "agents",
     rawUrl:
-      "https://raw.githubusercontent.com/davila7/claude-code-templates/main/cli-tool/components/skills/creative-design/ui-design-system/SKILL.md",
+      "https://raw.githubusercontent.com/wshobson/agents/main/plugins/accessibility-compliance/skills/wcag-audit-patterns/SKILL.md",
     githubUrl:
-      "https://github.com/davila7/claude-code-templates/blob/main/cli-tool/components/skills/creative-design/ui-design-system/SKILL.md",
-    name: "ui-design-system",
+      "https://github.com/wshobson/agents/blob/main/plugins/accessibility-compliance/skills/wcag-audit-patterns/SKILL.md",
+    name: "wcag-audit-patterns",
     description:
-      "Toolkit for creating and maintaining scalable design systems, including design tokens, component architecture, and documentation.",
+      "Conduct WCAG 2.2 accessibility audits with automated testing, manual verification, and remediation guidance. Use when auditing websites for accessibility, fixing WCAG violations, or implementing accessible design patterns.",
   },
   {
     slug: "tailwind-css-patterns",
