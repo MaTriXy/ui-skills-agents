@@ -94,18 +94,6 @@ export const registry: RegistrySkill[] = [
       "Conduct WCAG 2.2 accessibility audits with automated testing, manual verification, and remediation guidance. Use when auditing websites for accessibility, fixing WCAG violations, or implementing accessible design patterns.",
   },
   {
-    slug: "tailwind-css-patterns",
-    user: "giuseppe-trisciuoglio",
-    repo: "developer-kit",
-    rawUrl:
-      "https://raw.githubusercontent.com/giuseppe-trisciuoglio/developer-kit/main/skills/tailwind-css/SKILL.md",
-    githubUrl:
-      "https://github.com/giuseppe-trisciuoglio/developer-kit/blob/main/skills/tailwind-css/SKILL.md",
-    name: "tailwind-css-patterns",
-    description:
-      "Expert guide for building modern, responsive user interfaces with Tailwind CSS utility-first patterns and modern CSS best practices.",
-  },
-  {
     slug: "canvas-design",
     user: "anthropics",
     repo: "skills",

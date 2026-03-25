@@ -10,6 +10,7 @@ const skillList = skills as Array<{
   slug: string;
   label: string;
   description?: string;
+  isRegistry?: boolean;
 }>;
 ---
 
@@ -83,34 +84,73 @@ const skillList = skills as Array<{
           </div>
         </div>
 
-        <div>
-          <h2
-            class="text-parchment-900 mb-3 px-4 text-lg font-medium tracking-tight sm:px-0"
-          >
-            Skills
-          </h2>
-          <div class="grid gap-4 px-4 sm:grid-cols-2 sm:px-0">
-            {
-              skillList.map((skill) => (
-                <a
-                  href={`/skills/${skill.slug}`}
-                  class="hover:border-parchment-300 hover:bg-parchment-100 relative flex flex-col justify-between rounded-[12px] border border-neutral-200 bg-transparent px-6 py-4 transition-colors"
-                >
-                  <div class="flex flex-col gap-1">
-                    <div class="text-parchment-900 font-[450] tracking-tight">
-                      {skill.slug}
-                    </div>
-                    {skill.description ? (
-                      <div class="text-parchment-500 line-clamp-3 text-[14px] leading-snug">
-                        {skill.description}
-                      </div>
-                    ) : null}
-                  </div>
-                </a>
-              ))
-            }
-          </div>
-        </div>
+         <div>
+           <h2
+             class="text-parchment-900 mb-3 px-4 text-lg font-medium tracking-tight sm:px-0"
+           >
+             Skills
+           </h2>
+           <p class="text-parchment-500 mb-4 px-4 text-[15px] sm:px-0">
+             Foundation skills for design engineering.
+           </p>
+           <div class="grid gap-4 px-4 sm:grid-cols-2 sm:px-0">
+             {
+              skillList
+                .filter((skill) => !skill.isRegistry)
+                 .map((skill) => (
+                   <a
+                     href={`/skills/${skill.slug}`}
+                     class="hover:border-parchment-300 hover:bg-parchment-100 relative flex flex-col justify-between rounded-[12px] border border-neutral-200 bg-transparent px-6 py-4 transition-colors"
+                   >
+                     <div class="flex flex-col gap-1">
+                       <div class="text-parchment-900 font-[450] tracking-tight">
+                         {skill.slug}
+                       </div>
+                       {skill.description ? (
+                         <div class="text-parchment-500 line-clamp-3 text-[14px] leading-snug">
+                           {skill.description}
+                         </div>
+                       ) : null}
+                     </div>
+                   </a>
+                 ))
+             }
+           </div>
+         </div>
+
+         <div>
+           <h2
+             class="text-parchment-900 mb-3 px-4 text-lg font-medium tracking-tight sm:px-0"
+           >
+             Curated Skills
+           </h2>
+           <p class="text-parchment-500 mb-4 px-4 text-[15px] sm:px-0">
+             Best skills for UI work.
+           </p>
+           <div class="grid gap-4 px-4 sm:grid-cols-2 sm:px-0">
+             {
+              skillList
+                .filter((skill) => skill.isRegistry)
+                 .map((skill) => (
+                   <a
+                     href={`/skills/${skill.slug}`}
+                     class="hover:border-parchment-300 hover:bg-parchment-100 relative flex flex-col justify-between rounded-[12px] border border-neutral-200 bg-transparent px-6 py-4 transition-colors"
+                   >
+                     <div class="flex flex-col gap-1">
+                       <div class="text-parchment-900 font-[450] tracking-tight">
+                         {skill.slug}
+                       </div>
+                       {skill.description ? (
+                         <div class="text-parchment-500 line-clamp-3 text-[14px] leading-snug">
+                           {skill.description}
+                         </div>
+                       ) : null}
+                     </div>
+                   </a>
+                 ))
+             }
+           </div>
+         </div>
       </div>
     </div>
   </div>
